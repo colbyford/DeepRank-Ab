@@ -1,4 +1,4 @@
-name: deeprank-ab-gpu
+name: deeprank-ab
 channels:
   - pytorch
   - pyg

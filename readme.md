@@ -28,36 +28,31 @@ This repository provides full inference pipleline for model described in the pap
 1. Clone this repository:
 
 ```bash
-git clone https://github.com/yourusername/DeepRank-Ab.git
+git clone https://github.com/haddocking/DeepRank-Ab
 cd DeepRank-Ab
 ```
 
-2. Install dependencies (Python 3.9+ recommended):
+2. Create and activate a mamba environment: 
 
 ```bash
-pip install -r requirements.txt
+mamba env create -f environment-gpu.yml
+mamba activate deeprank-ab
 ```
 
-3. (Optional) Install PyTorch with CUDA support for GPU:
-
-```bash
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-```
-
----
 
 ## Usage
 
 The main entry point is `DeepRank-Ab/scripts/inference.py`:
 
+
 ```bash
-python deeprank_ab_inference.py <pdb_file> <heavy_chain_id> <light_chain_id> <antigen_chain_id>
+python3 scripts/inference.py <pdb_file> <antibody_heavy_chain_id> <antibody_light_chain_id> <antigen_chain_id>
 ```
 
 ### Example
 
 ```bash
-python deeprank_ab_inference.py examples/1abc.pdb H L A
+python3 scripts/inference.py example/test.pdb H L A 
 ```
 
 This command will create a workspace, generate embeddings, annotate CDRs, build graphs, cluster nodes, predict DockQ scores, and save outputs in CSV and HDF5 formats.
