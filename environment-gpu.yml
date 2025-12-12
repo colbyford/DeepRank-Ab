@@ -173,3 +173,4 @@ dependencies:
       - tenacity==8.2.2
       - tomli==2.0.1
       - tzdata==2023.3
+      - transformers==4.30.2 
