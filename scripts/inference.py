@@ -230,7 +230,6 @@ def preprocess_input_pdb(
     heavy_chain_id: str,
     light_chain_id: str,
     antigen_chain_id: str,
-    temp_dir: Path,
 ):
     fasta_out = work_dir / "fastas"
     fasta_annot, fasta_esm = convert_pdb_to_fastas(pdb_file, fasta_out)
@@ -550,8 +549,8 @@ def main():
 
     for pdb in pdb_models:
         temp = work / "processed"
-        merged, (fasta_annot, fasta_esm) = preprocess_input_pdb(
-            work, pdb, HID, LID, AID, temp
+        _, (fasta_annot, fasta_esm) = preprocess_input_pdb(
+            work, pdb, HID, LID, AID
         )
 
         embed_dir = temp / "embeddings"

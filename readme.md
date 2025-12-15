@@ -1,7 +1,7 @@
 # DeepRank-Ab Inference Pipeline
 
 DeepRank-Ab is a scoring function for ranking
-antibody--antigen docking models based on geometric deep learning.
+antibody-antigen docking models based on geometric deep learning.
 
 
 📄 **Publication**\
@@ -15,18 +15,17 @@ described in the paper.
 ## 🚀 Features
 
 -   **PDB Processing**
-    -   Split ensemble models\
-    -   Extract chain sequences\
-    -   Merge chains for downstream analysis\
+    -   Split ensemble models 
+    -   Extract chain sequences 
+    -   Merge chains for downstream analysis 
 -   **FASTA Conversion**
-    -   Generate FASTA files for CDR annotation and ESM embeddings\
+    -   Generate FASTA files for CDR annotation and ESM embeddings 
 -   **ESM Embeddings**
-    -   Compute embeddings using `esm2_t33_650M_UR50D`\
+    -   Compute embeddings using `esm2_t33_650M_UR50D` 
 -   **Graph Construction**
-    -   Build atom-level graphs with precomputed node and edge features\
+    -   Build atom-level graphs with precomputed node and edge features 
 -   **Prediction**
-    -   Evaluate pretrained EGNN models and output predicted DockQ
-        scores
+    -   Inference with pretrained EGNN models and output predicted DockQ
 
 ------------------------------------------------------------------------
 
@@ -79,12 +78,12 @@ python3 scripts/inference.py example/test.pdb H L A
 
 This will:
 
--   Create a workspace\
--   Generate ESM embeddings\
--   Annotate CDRs\
--   Build atom-level graphs\
--   Cluster nodes\
--   Predict DockQ scores\
+-   Create a workspace
+-   Generate ESM embeddings
+-   Annotate CDRs
+-   Build atom-level graphs
+-   Cluster nodes
+-   Predict DockQ scores
 -   Save output files (`.csv` and `.hdf5`)
 
 ------------------------------------------------------------------------
@@ -105,49 +104,6 @@ This will:
 
 ------------------------------------------------------------------------
 
-## 📤 Output Files
-
-  -----------------------------------------------------------------------
-  File Type                      Description
-  ------------------------------ ----------------------------------------
-  **CSV**                        Predicted DockQ scores
-                                 (`pdb_id, predicted_dockq`)
-
-  **HDF5 (predictions)**         Raw neural-network prediction values
-
-  **HDF5 (graphs)**              Graph representations of
-                                 antibody--antigen complexes
-
-  **ESM embeddings**             Chain embeddings used during inference
-  -----------------------------------------------------------------------
-
-------------------------------------------------------------------------
-
-## 🔄 Pipeline Overview
-
-``` text
-PDB Input
-   │
-   ├─ Split ensemble models
-   │
-   ├─ Convert chains to FASTA
-   │
-   ├─ Generate ESM embeddings
-   │
-   ├─ Annotate CDRs
-   │
-   ├─ Build atom-level graph with features
-   │
-   ├─ Add ESM embeddings to nodes
-   │
-   ├─ Cluster nodes (MCL)
-   │
-   └─ Predict DockQ scores using pretrained EGNN
-        │
-        └─ Output: CSV + HDF5
-```
-
-------------------------------------------------------------------------
 
 ## ⚙️ Large-Scale Inference
 
@@ -160,11 +116,8 @@ Example:
 python3 scripts/run_batch_inference.sh
 ```
 
-(Modify the script to point to your dataset.)
-
 ------------------------------------------------------------------------
 
 ## 📫 Support
 
-For issues or questions, please open a GitHub issue or contact the
-authors of the paper.
+For issues or questions, please open a GitHub issue.

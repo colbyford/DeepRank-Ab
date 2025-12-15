@@ -4,10 +4,9 @@ from pathlib import Path
 from Bio.PDB import PDBParser
 from Bio import SeqIO, pairwise2
 from anarci import anarci
-from itertools import chain as chain_
 from multiprocessing import Pool
 
-import sys 
+import os
 BASE = Path(__file__).resolve().parent 
 hmmscan_path = BASE / "ANARCI"
 print("Using ANARCI path:", hmmscan_path)
@@ -246,11 +245,6 @@ def annotate_folder_one_by_one_mp(folder: Path, fasta_folder: Path, output_dir: 
 
     print(f"Annotations written to {output_file}")
 
-# folder_path = '/trinity/login/xxu/02_rankab/external_test_set/arne_e_set/redo/data/8f5n'
-# fasta_path = '/trinity/login/xxu/02_rankab/external_test_set/arne_e_set/redo/data/8f5n/fasta'
-# annotate_folder_one_by_one(Path(folder_path), Path('annotations'), Path(fasta_path))
-
-
 
 def annotate_folder_one_by_one_mp_single_fasta(folder: Path, fasta_file_path: Path, output_dir: Path, n_cores: int = None, antigen_chainid: str = 'A'):
     """ 
@@ -290,12 +284,3 @@ def annotate_folder_one_by_one_mp_single_fasta(folder: Path, fasta_file_path: Pa
         json.dump(all_annotations, f, indent=2)
 
     print(f"Annotations written to {output_file}")
-
-
-
-#test single 
-
-
-# fasta_f = '/trinity/login/xxu/02_rankab/diff_analysis/fasta_backup/8s6z_antibody_clean.fasta'
-# pdbf = '/trinity/login/xxu/02_rankab/diff_analysis/af3_100seed_data/8s6z/rank-111_seed63-2_merged.pdb'
-# annotate_single_pdb(Path(fasta_f), Path(pdbf), antigen_chainid='B')

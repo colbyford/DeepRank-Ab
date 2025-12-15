@@ -10,7 +10,7 @@ import warnings
 import json
 from Bio.PDB.PDBParser import PDBParser
 from Bio import BiopythonWarning
-from itertools import zip_longest
+
 
 warnings.filterwarnings("ignore", category=BiopythonWarning)
 
