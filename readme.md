@@ -121,3 +121,21 @@ python3 scripts/run_batch_inference.sh
 ## 📫 Support
 
 For issues or questions, please open a GitHub issue.
+
+------------------------------------------------------------------------
+
+## Docker
+
+First, build the Docker image:
+
+```bash
+docker build -t deeprank-ab .
+```
+
+Then, run the Docker container (and mount a local directory)
+
+```bash
+docker run --gpus all -v ./data:/mnt/data --rm --name deeprank-ab -it deeprank-ab /bin/bash
+
+# docker run --gpus all -v ./data:/mnt/data --rm --name deeprank-ab -it cford38/deeprank-ab:latest /bin/bash
+```
