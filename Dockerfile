@@ -22,6 +22,12 @@ WORKDIR /software/deeprank-ab
 ## Clone DeepRank-Ab project
 RUN git clone https://github.com/haddocking/DeepRank-Ab /software/deeprank-ab 
 
+## Get weights
+RUN wget https://dl.fbaipublicfiles.com/fair-esm/regression/esm2_t33_650M_UR50D-contact-regression.pt \
+        -O /software/deeprank-ab/esm_weights/esm2_t33_650M_UR50D-contact-regression.pt && \
+    wget https://dl.fbaipublicfiles.com/fair-esm/models/esm2_t33_650M_UR50D.pt \
+        -O /software/deeprank-ab/esm_weights/esm2_t33_650M_UR50D.pt
+
 ## Create conda environment
 # COPY environments/environment-gpu.yml /software/deeprank-ab/environments/environment-gpu.yml
 RUN conda env create -f /software/deeprank-ab/environment-gpu.yml
