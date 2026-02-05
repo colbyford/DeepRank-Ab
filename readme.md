@@ -126,10 +126,12 @@ For issues or questions, please open a GitHub issue.
 
 ## Docker
 
-First, build the Docker image:
+First, build (or pull) the Docker image:
 
 ```bash
-docker build -t deeprank-ab .
+docker build --platform linux/amd64 -t deeprank-ab .
+
+# docker pull cford38/deeprank-ab:latest
 ```
 
 Then, run the Docker container (and mount a local directory)
