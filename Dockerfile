@@ -1,7 +1,7 @@
 FROM pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime
 
 LABEL authors="Colby T. Ford <colby@tuple.xyz>"
-ENV debian_frontend=noninteractive
+ENV DEBIAN_FRONTEND noninteractive
 
 ## Install system requirements
 RUN apt update && \
@@ -24,7 +24,8 @@ WORKDIR /software/deeprank-ab
 RUN git clone https://github.com/haddocking/DeepRank-Ab /software/deeprank-ab 
 
 ## Get weights
-RUN wget https://dl.fbaipublicfiles.com/fair-esm/regression/esm2_t33_650M_UR50D-contact-regression.pt \
+RUN mkdir -p /software/deeprank-ab/esm_weights && \
+    wget https://dl.fbaipublicfiles.com/fair-esm/regression/esm2_t33_650M_UR50D-contact-regression.pt \
         -O /software/deeprank-ab/esm_weights/esm2_t33_650M_UR50D-contact-regression.pt && \
     wget https://dl.fbaipublicfiles.com/fair-esm/models/esm2_t33_650M_UR50D.pt \
         -O /software/deeprank-ab/esm_weights/esm2_t33_650M_UR50D.pt
