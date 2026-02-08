@@ -125,6 +125,7 @@ For issues or questions, please open a GitHub issue.
 ------------------------------------------------------------------------
 
 ## Docker
+We have provided a basic Docker image, which includes the model weights and code for running DeepRank-Ab. This may be useful for high-performance computing scenarios where you'd like to run this tool on many complexes.
 
 First, build (or pull) the Docker image:
 
